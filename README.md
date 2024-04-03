@@ -6,5 +6,4 @@ Relevant files:
 PulseShader.shader
 PulseManager.cs
 CameraMovement.cs
-
-[![Watch the video]()](effectshowcase.mp4)
+<video width="630" height="300" src="effectshowcase.mp4"></video>
