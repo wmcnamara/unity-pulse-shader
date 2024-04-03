@@ -6,4 +6,6 @@ Relevant files:
 PulseShader.shader
 PulseManager.cs
 CameraMovement.cs
-<video width="630" height="300" src="effectshowcase.mp4"></video>
+
+https://github.com/wmcnamara/unity-pulse-shader/assets/57050262/bdeb32c2-2e7d-43f4-9161-f612e2b04d22
+
