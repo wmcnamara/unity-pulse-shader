@@ -18,5 +18,12 @@ public class CameraMovement : MonoBehaviour
         translation = translation * Time.deltaTime * MovementSpeed;
 
         transform.Translate(translation, Space.Self);
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            FindObjectOfType<PulseManager>().StartPulse();
+        }
     }
+
+
 }

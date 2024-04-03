@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pulse : MonoBehaviour
+public class PulseManager : MonoBehaviour
 {
     [SerializeField] private float pulseMaxRadius = 10.0f;
+    [SerializeField] private bool enableWaveEffect = false;
     [SerializeField] private float pulseSpeed = 2.0f;
     [SerializeField] private Color pulseColor = Color.white;
     [SerializeField] private float pulseSize = 1.0f;
@@ -13,13 +14,14 @@ public class Pulse : MonoBehaviour
     private float pulseRadius = 0.0f;
     private bool isPulsing = false;
 
-    void Start()
+    private void Start()
     {
+        isPulsing = false;
         pulseRadius = 0.0f;
         pulseStartingPos = Vector3.zero;
     }
 
-    void Update()
+    private void Update()
     {
         if (isPulsing)
         {
@@ -37,16 +39,11 @@ public class Pulse : MonoBehaviour
                 mat.SetFloat("pulseRadius", pulseRadius);
                 mat.SetFloat("pulseSize", pulseSize);
                 mat.SetColor("pulseColor", pulseColor);
-                mat.SetInt("isPulsing", isPulsing ? 1 : 0);
+                mat.SetInteger("isPulsing", isPulsing ? 1 : 0);
+                mat.SetInteger("enableWaveEffect", enableWaveEffect ? 1 : 0);
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            StartPulse();
-        }
     }
-
 
     public void StartPulse()
     {

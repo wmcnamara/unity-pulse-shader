@@ -3,10 +3,6 @@ Shader "Custom/PulseShader"
     Properties
     {
         _Color ("Color", Color) = (1,1,1,1)
-        _PulsedColor ("PulsedColor", Color) = (1,0,1,1)
-        _MainTex ("Albedo (RGB)", 2D) = "white" {}
-        _Glossiness ("Smoothness", Range(0,1)) = 0.5
-        _Metallic ("Metallic", Range(0,1)) = 0.0
 		_Waves("Waves", Float) = 1.0
         _Speed("Speed", Float) = 0.2
     }
@@ -24,14 +20,12 @@ Shader "Custom/PulseShader"
 
 			// access shader property in Cg
 			fixed4 _Color;
-			fixed4 _PulsedColor;
-			half   _Threshold;
-			half   _ThresholdPx;
 		    uniform float pulseRadius;
 			uniform float3 pulseStartingPosition;
 			uniform float pulseSize;
 			uniform fixed4 pulseColor;
 			uniform int isPulsing;
+			uniform int enableWaveEffect;
 			float _Speed;
             float _Waves;
 
@@ -69,7 +63,7 @@ Shader "Custom/PulseShader"
 				o.uv  = float4(v.texcoord.xy, 0, 0);
 				o.posWorld = mul(unity_ObjectToWorld, v.vertex);
 		
-				if (isInPulseRange(o.posWorld)) 
+				if (isInPulseRange(o.posWorld) && enableWaveEffect) 
 				{
 					v.vertex.y += cos(o.uv.x * _Waves + _Time.y) * _Speed;
 					v.vertex.y += sin(o.uv.y * _Waves / 2.0 + _Time.y) * _Speed;
