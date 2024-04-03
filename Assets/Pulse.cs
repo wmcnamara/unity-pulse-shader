@@ -32,6 +32,7 @@ public class PulseManager : MonoBehaviour
                 isPulsing = false;
             }
 
+            //This is BAD. I know I need to cache the renders but im too lazy :3
             foreach (Renderer renderer in FindObjectsOfType<Renderer>()) 
             {
                 Material mat = renderer.material;
